@@ -1,0 +1,130 @@
+{
+	"language": "en",
+	"TimeZone": "Asia/Manila",
+	"ProductKey": "s/vP unnH Pln5 Z4Vn SmGK /Fwf Oh/z jMMp 8nGd P8FV C94u ybpn Fg7j v3ss dndC GtXi 6gdr VzVr 4hy2 X7IY 5KHN xg==",
+	"Key": "09 3D DF 7E B6 01 80 74 5F B1 E8 4A 02 92 E2 05",
+	"key": "97 FC 57 81 09 68 F9 54 17 2F 19 FD 24 1A 0D 92",
+	"Dashboard": "",
+	"dashboard": "",
+	"PORT": 8080,
+	"currentMainPort": 8080,
+	"DeveloperMode": false,
+	"DisableCommands": [],
+	"DisableEvents": [],
+	"login": [
+		"fca-umaru-v1",
+		"fca-umaru-v2"
+	],
+	"botname": "Umaru",
+	"prefix": "/",
+	"nickname": "》 {prefix} 《 ❃ ➠ {botname}",
+	"adminbot": [
+		"100052086120278"
+	],
+	"RankupMode": "canvas",
+	"WelcomeMode": "canvas",
+	"LeaveMode": "canvas",
+	"BanTemplate": "none",
+	"SqliteDB": true,
+	"AppStatePath": "/appstate.txt",
+	"DatabasePath": "/data/data",
+	"PerformanceMode": false,
+	"LanguageAndTimeZone_Detector": true,
+	"Anonymous": false,
+	"console": true,
+	"JournalingMechanism": true,
+	"AppStateEncryption": true,
+	"ActiveStatus": true,
+	"EventInUsers": true,
+	"kernel": [
+		"opSG1Q7ANOftq1bMK7/Asrkyks/3rfh5bt3aXCF/b72CTGyjGkH55MBZGQ7pf4BM"
+	],
+	"PerformanceModeConfig": {
+		"ThreadLimit": 100,
+		"ThreadPerResponseLimit": 100,
+		"AutoLeaveInactiveGroupMode": false,
+		"AutoLeaveMode": false,
+		"resend": true,
+		"LanguageAndTimeZone_Detector": true,
+		"Scheduler": false,
+		"nsfw": false,
+		"UsersPhoto": false
+	},
+	"Owner": "John Lester",
+	"Age": "16",
+	"Gender": "Male",
+	"Facebook": "https://www.facebook.com/rootalocalhost.dev",
+	"cmd_not_found": "Command {{c}} not found\nUse {{p}} to display all commands is that {{t}} or not?",
+	"permission_1": "⚠️ You don't have permission to use \"{{c}}\". Only group admin can use this command.",
+	"permission_2": "⚠️ You don't have permission to use \"{{c}}\". Only admin can use this command.",
+	"nsfw_msg": "⚠️ Your group is not allowed to use NSFW commands.",
+	"cooldown_msg": "Please wait {{t}}. {{c}}",
+	"Automated": {
+		"AutoReact": true,
+		"AutoLeaveMode": false,
+		"AutoLeaveInactiveGroupMode": false,
+		"AutoOffBot": false,
+		"AutoOffBotStartSleep": "01:00",
+		"AutoOffBotSendMessage": "Bye everyone. i need to sleep i'll be right back at 5:00AM 🥰",
+		"AutoOffBotEndSleep": "05:00",
+		"AutoGreet": false,
+		"AutoGreetWithSticker": false,
+		"AutoGreetSendPerHour": "2",
+		"HolidayAutoGreet": false,
+		"ChristmasCountdown": false,
+		"ChristmasCountdownMsg": "🎄 {d} days before christmas\n{t}",
+		"AcceptFriendRequest": false,
+		"AutoPending": false,
+		"PendingMsg": "{botname} Connected Successfully!\nUse {prefix}help for more info :>",
+		"AutoBioStatus": false,
+		"AutoBioStatusSetPerHour": "1",
+		"BioStatus": "Prefix: {prefix}\nmade by: https://fb.com/rootalocalhost.dev\n\n🟢 Active: {time}",
+		"AutoLeave": false
+	},
+	"FcaOptions": {
+		"forceLogin": true,
+		"listenEvents": true,
+		"logLevel": "silent",
+		"selfListen": false,
+		"autoMarkRead": true,
+		"userAgent": "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36 OPR/84.0.4316.21",
+		"autoReconnect": true
+	},
+	"Addons": {
+		"Welcome": "Hello, {name} Welcome to {threadname}. You are the {num}th member of our community; please enjoy! 🥳♥",
+		"Leave": {
+			"goodbye": "Goodbye {name}.\n\nReason: {reason}",
+			"left": "Left the group",
+			"remove": "Kicked by Administrator"
+		},
+		"Rankup": "{name} your keyboard hero level has reached level {level}",
+		"isBanned": {
+			"thread": "❎ Your thread is unable to use bot \n\nReason: {reason}",
+			"user": "❎ Your unable to use bot \n\nReason: {reason}"
+		},
+		"Scheduler": {
+			"Hello Greet every 1 Hour": {
+				"isEnable": false,
+				"schedule": "1 */01 * * *",
+				"messages": "Hello everyone have a nice day.",
+				"attachment": "None",
+				"value": "00-00 01:00",
+				"mode": "Interval"
+			},
+			"Good morning in 6:00AM": {
+				"isEnable": false,
+				"schedule": "1 06 * * *",
+				"messages": "Good morning everyone have a nice day",
+				"attachment": "None",
+				"value": "00-00 06:00",
+				"mode": "None"
+			}
+		},
+		"Key": "09 3D DF 7E B6 01 80 74 5F B1 E8 4A 02 92 E2 05",
+		"key": "97 FC 57 81 09 68 F9 54 17 2F 19 FD 24 1A 0D 92",
+		"Backup": {
+			"key": "97 FC 57 81 09 68 F9 54 17 2F 19 FD 24 1A 0D 92",
+			"Key": "09 3D DF 7E B6 01 80 74 5F B1 E8 4A 02 92 E2 05"
+		}
+	}
+}
