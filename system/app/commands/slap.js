@@ -23,7 +23,7 @@ export const execCommand = async function({api, event, key, kernel, umaru, args,
   await kernel.writeStream(path, image);
   let name = await Users.getName(mentions[0]);
   let text = ["Slapped! {{1}} 😾","Oops, Slapped! 😾 {{1}}","You got slapped, {{1}} 😾","In your face, {{1}}! Slapped! 😾","Slapped! 😾 {{1}}, take that!"];
-  let msg = (await translate(text[Math.floor(Math.random() * text.length)], event, null, true)).replace(/{{1}}/g, name);
+  let msg = (await translate(text[Math.floor(Math.random() * text.length)], event, null, true)).replace("{{1}}", name);
   return api.sendMessage({body: (context != "") ? context : msg, attachment: fs.createReadStream(path), mentions: [{ tag: name, id: mentions[0]}]}, event.threadID, async() => {await fs.promises.unlink(path);
   }, event.messageID)
 }

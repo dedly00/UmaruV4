@@ -23,7 +23,6 @@ export const execCommand = async function({api, event, args, key, kernel, Users,
     context[event.senderID].push({ role: 'assistant', content: event.messageReply.body});
   }
   context[event.senderID].push({ role: 'user', content: text});
-  api.sendMessage((await translate("🔍 Searching", event, null, true))+" "+text, event.threadID, event.messageID);
   await umaru.createJournal(event);
     let ai = await kernel.read(["ai"], { key: key, completions: context[event.senderID], username: username, botname: botname, timezone: timeZone, senderID: event.senderID});
    await umaru.deleteJournal(event);
