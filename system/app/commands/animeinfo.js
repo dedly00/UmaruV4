@@ -21,7 +21,7 @@ export const execCommand = async function({api, event, key, kernel, umaru, args,
   let info = await kernel.read(["animeinfo"], {key: key, search: text});
   if(typeof info === "string") return api.sendMessage("⚠️ "+data, event.threadID, event.messageID);
    let data = info[0]
-  let msg = (await translate(`🌸 Title: {{a}}\n🌸 Overview: {{c}}\n🌸 Release date: {{d}}\n🌸 Rating: {{e}}`, event, null, true)).replace("{{a}}", data.title).replace("{{c}}", data.shortDescription).replace("{{d}}", data.startDate).replace("{{e}}", data.score);
+  let msg = (await translate(`🌸 Title: {{1}}\n🌸 Overview: {{2}}\n🌸 Release date: {{3}}\n🌸 Rating: {{4}}`, event, null, true)).replace("{{1}}", data.title).replace("{{2}}", data.shortDescription).replace("{{3}}", data.startDate).replace("{{4}}", data.score);
   try {
   let img = (await axios.get(data.thumbnail, {responseType: "stream"})).data;
   let path = umaru.sdcard+"/Pictures/"+keyGenerator()+".jpg";

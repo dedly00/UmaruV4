@@ -25,7 +25,7 @@ export const execCommand = async function({api, event, key, kernel, umaru, args,
     await umaru.deleteJournal(event);
   }
   if(typeof data === "string") return api.sendMessage("⚠️ "+data, event.threadID, event.messageID);
-  let msg = (await translate(`🌸 Title: {{a}}\n🌸 Language: {{b}}\n🌸 Overview: {{c}}\n🌸 Release date: {{d}}\n🌸 Popularity: {{e}}\n🌸 Vote average: {{f}}\n🌸 Vote count: {{g}}`, event, null, true)).replace("{{a}}", data.original_title).replace("{{b}}", data.original_language).replace("{{c}}", data.overview).replace("{{d}}", data.release_date).replace("{{e}}", data.popularity).replace("{{f}}", data.vote_average).replace("{{g}}", data.vote_count);
+  let msg = (await translate(`🌸 Title: {{1}}\n🌸 Language: {{2}}\n🌸 Overview: {{3}}\n🌸 Release date: {{4}}\n🌸 Popularity: {{5}}\n🌸 Vote average: {{6}}\n🌸 Vote count: {{7}}`, event, null, true)).replace("{{1}}", data.original_title).replace("{{2}}", data.original_language).replace("{{3}}", data.overview).replace("{{4}}", data.release_date).replace("{{5}}", data.popularity).replace("{{6}}", data.vote_average).replace("{{7}}", data.vote_count);
   try {
   let img = (await axios.get(data.imageBase+data.poster_path, {responseType: "stream"})).data;
   let path = umaru.sdcard+"/Pictures/"+keyGenerator()+".jpg";
