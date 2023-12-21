@@ -65,7 +65,7 @@ if(admins.includes(ownId) && event.logMessageType == 'log:unsubscribe' && umaru.
         api.changeNickname((nicknames[event.logMessageData.participant_id]) ? nicknames[event.logMessageData.participant_id] : umaru.data['users'][event.logMessageData.participant_id].firstName, event.threadID, event.logMessageData.participant_id, async (err) => {
           if (err) return;
           let name = await Users.getName(event.logMessageData.participant_id);
-          return api.sendMessage((await translate((event.author == event.logMessageData.participant_id) ? "🛡 Anti-change group nickname is enabled. Make sure you turn it off before changing your nickname." : `🛡 Anti-change group nickname is enabled. Make sure you turn it off before changing the ${name} nickname.`, event, null, true)), event.threadID, event.messageID)
+          return api.sendMessage((await translate((event.author == event.logMessageData.participant_id) ? "🛡 Anti-change group nickname is enabled. Make sure you turn it off before changing your nickname." : `🛡 Anti-change group nickname is enabled. Make sure you turn it off before changing the {{1}} nickname.`, event, null, true)).replace("{{1}}", name), event.threadID, event.messageID)
         })
     }
   } catch (e) {

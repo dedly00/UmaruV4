@@ -19,7 +19,7 @@ export const execCommand = async function({api, event, kernel, key, umaru, keyGe
       for(const item of email) {
         msg += "➣ "+item.replace(".com", " .com")+"\n";
       }
-      msg += "\n"+(await translate(`» Use {{p}} to view a message`, event, null, true)).replace("{{p}}", `${prefix}${this.setup.name} check [email address]`);
+      msg += "\n"+(await translate(`» Use {{1}} to view a message`, event, null, true)).replace("{{1}}", `${prefix}${this.setup.name} check [email address]`);
       return api.sendMessage(msg, event.threadID, event.messageID);
     break;
     case "check":

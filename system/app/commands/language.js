@@ -26,7 +26,7 @@ export const execCommand = async function({api, event, umaru, args,   usage, pre
       if(!["me", "group", "system"].some(a => a === set)) return usage(this, prefix, event)
       let _2 = args.splice(2).join(" ").toLowerCase().split(" ").map(a => a.replace(a[0], a[0].toUpperCase())).join(" ");
       let lang = (langs2.hasOwnProperty(_2)) ? langs2[_2] :  (langs.hasOwnProperty(_2.toLowerCase())) ?  _2.toLowerCase() : null;
-      if(lang === null) return api.sendMessage((await translate("⚠️ Unsupported language. Use the {{p}} to display all supported languages.", event, null, true)).replace("{{p}}", prefix+"language list"), event.threadID, event.messageID);
+      if(lang === null) return api.sendMessage((await translate("⚠️ Unsupported language. Use the {{1}} to display all supported languages.", event, null, true)).replace("{{1}}", prefix+"language list"), event.threadID, event.messageID);
       if(set == "me") {
          umaru.data['users'][event.senderID]['lang'] = lang;
          await umaru.save();
@@ -34,12 +34,12 @@ export const execCommand = async function({api, event, umaru, args,   usage, pre
       } else if(set == "group") {
         if(event.isGroup == false) return api.sendMessage(await translate("⚠️ This option is only allowed in group chat.", event, null, true), event.threadID, event.messageID);
         let threadAdmin = await Threads.getAdminIDs(event.threadID);
-        if(!threadAdmin.includes(event.senderID)) return api.sendMessage((await translate(umaru.config.permission_1, event, null, false)).replace("{{c}}", event.body), event.threadID, event.messageID);
+        if(!(threadAdmin.includes(event.senderID)? true:systemadmin.includes(event.senderID))) return api.sendMessage((await translate(umaru.config.permission_1, event, null, false)).replace("{{1}}", event.body), event.threadID, event.messageID);
         umaru.data['threads'][event.threadID]['lang'] = lang;
          await umaru.save();
         return api.sendMessage((await translate("✅ Successfully change the language to "+langs[lang]+" "+flag[lang], event, null, false)), event.threadID, event.messageID)
       } else if(set == "system") {
-        if(!systemadmin.includes(event.senderID)) return Umaru.sendMessage((await translate(umaru.config.permission_2, event, null, false)).replace("{{c}}", event.body), event.threadID, event.messageID);
+        if(!systemadmin.includes(event.senderID)) return Umaru.sendMessage((await translate(umaru.config.permission_2, event, null, false)).replace("{{1}}", event.body), event.threadID, event.messageID);
         umaru.config.language = lang;
         await fs.promises.writeFile(umaru.configPath, JSON.stringify(umaru.config, null, '\t'));
         return api.sendMessage((await translate("✅ Successfully change the language to "+langs[lang]+" "+flag[lang], event, null, false)), event.threadID, event.messageID)
@@ -56,12 +56,12 @@ export const execCommand = async function({api, event, umaru, args,   usage, pre
       } else if(reset == "group") {
         if(event.isGroup == false) return api.sendMessage(await translate("⚠️ This option is only allowed in group chat.", event, null, true), event.threadID, event.messageID);
         let threadAdmin = await Threads.getAdminIDs(event.threadID);
-        if(!threadAdmin.includes(event.senderID)) return api.sendMessage((await translate(umaru.config.permission_1, event, null, false)).replace("{{c}}", event.body), event.threadID, event.messageID);
+        if(!(threadAdmin.includes(event.senderID)? true:systemadmin.includes(event.senderID))) return api.sendMessage((await translate(umaru.config.permission_1, event, null, false)).replace("{{1}}", event.body), event.threadID, event.messageID);
          delete umaru.data['threads'][event.threadID]['lang'];
          await umaru.save();
         return api.sendMessage((await translate("✅ Successfully reset the language.", event, null, false)), event.threadID, event.messageID);
       } else if(reset == "system") {
-        if(!systemadmin.includes(event.senderID)) return Umaru.sendMessage((await translate(umaru.config.permission_2, event, null, false)).replace("{{c}}", event.body), event.threadID, event.messageID);
+        if(!systemadmin.includes(event.senderID)) return Umaru.sendMessage((await translate(umaru.config.permission_2, event, null, false)).replace("{{1}}", event.body), event.threadID, event.messageID);
         umaru.config.language = "default";
         await fs.promises.writeFile(umaru.configPath, JSON.stringify(umaru.config, null, '\t'));
         return api.sendMessage((await translate("✅ Successfully reset the language.", event, null, false)), event.threadID, event.messageID);

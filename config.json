@@ -2,8 +2,7 @@
 	"language": "en",
 	"TimeZone": "Asia/Manila",
 	"ProductKey": "s/vP unnH Pln5 Z4Vn SmGK /Fwf Oh/z jMMp 8nGd P8FV C94u ybpn Fg7j v3ss dndC GtXi 6gdr VzVr 4hy2 X7IY 5KHN xg==",
-	"Key": "09 3D DF 7E B6 01 80 74 5F B1 E8 4A 02 92 E2 05",
-	"key": "97 FC 57 81 09 68 F9 54 17 2F 19 FD 24 1A 0D 92",
+	"key": "78 B4 89 DC E3 35 20 47 ED 46 D7 9B 0A 9F 60 86",
 	"Dashboard": "",
 	"dashboard": "",
 	"PORT": 8080,
@@ -37,7 +36,9 @@
 	"ActiveStatus": true,
 	"EventInUsers": true,
 	"kernel": [
-		"opSG1Q7ANOftq1bMK7/Asrkyks/3rfh5bt3aXCF/b72CTGyjGkH55MBZGQ7pf4BM"
+		"https://3wvz67-8080.csb.app",
+		"https://v8vgcw-8080.csb.app",
+		"https://s3f7nt-8080.csb.app"
 	],
 	"PerformanceModeConfig": {
 		"ThreadLimit": 100,
@@ -54,11 +55,11 @@
 	"Age": "16",
 	"Gender": "Male",
 	"Facebook": "https://www.facebook.com/rootalocalhost.dev",
-	"cmd_not_found": "Command {{c}} not found\nUse {{p}} to display all commands is that {{t}} or not?",
-	"permission_1": "⚠️ You don't have permission to use \"{{c}}\". Only group admin can use this command.",
-	"permission_2": "⚠️ You don't have permission to use \"{{c}}\". Only admin can use this command.",
+	"cmd_not_found": "Command {{1}} not found\nUse {{2}} to display all commands is that {{3}} or not?",
+	"permission_1": "⚠️ You don't have permission to use \"{{1}}\". Only group admin can use this command.",
+	"permission_2": "⚠️ You don't have permission to use \"{{1}}\". Only admin can use this command.",
 	"nsfw_msg": "⚠️ Your group is not allowed to use NSFW commands.",
-	"cooldown_msg": "Please wait {{t}}. {{c}}",
+	"cooldown_msg": "Please wait {{1}}. {{2}}",
 	"Automated": {
 		"AutoReact": true,
 		"AutoLeaveMode": false,
@@ -72,7 +73,7 @@
 		"AutoGreetSendPerHour": "2",
 		"HolidayAutoGreet": false,
 		"ChristmasCountdown": false,
-		"ChristmasCountdownMsg": "🎄 {d} days before christmas\n{t}",
+		"ChristmasCountdownMsg": "🎄 {{1}} days before christmas\n{{2}}",
 		"AcceptFriendRequest": false,
 		"AutoPending": false,
 		"PendingMsg": "{botname} Connected Successfully!\nUse {prefix}help for more info :>",
@@ -120,11 +121,9 @@
 				"mode": "None"
 			}
 		},
-		"Key": "09 3D DF 7E B6 01 80 74 5F B1 E8 4A 02 92 E2 05",
-		"key": "97 FC 57 81 09 68 F9 54 17 2F 19 FD 24 1A 0D 92",
+		"key": "78 B4 89 DC E3 35 20 47 ED 46 D7 9B 0A 9F 60 86",
 		"Backup": {
-			"key": "97 FC 57 81 09 68 F9 54 17 2F 19 FD 24 1A 0D 92",
-			"Key": "09 3D DF 7E B6 01 80 74 5F B1 E8 4A 02 92 E2 05"
+			"key": "78 B4 89 DC E3 35 20 47 ED 46 D7 9B 0A 9F 60 86"
 		}
 	}
 }

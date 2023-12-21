@@ -19,6 +19,6 @@ export const execCommand = async function({api, event, args, translate, umaru, s
   let emoji = (Array.isArray(text)) ? text[0]:"";
   return api.changeThreadEmoji(emoji, event.threadID, async(err) => {
       if(err) return api.sendMessage((await translate("⚠️ An error occurred: "+err.error, event, null, true)), event.threadID, event.messageID);
-      api.sendMessage((await translate("✅ Successfully set the reaction to {{n}}", event, null, true)).replace("{{n}}", (emoji == "") ? "👍":emoji), event.threadID, event.messageID)
+      api.sendMessage((await translate("✅ Successfully set the reaction to {{1}}", event, null, true)).replace("{{1}}", (emoji == "") ? "👍":emoji), event.threadID, event.messageID)
   });
 }

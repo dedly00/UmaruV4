@@ -36,7 +36,7 @@ export const execEvent = async function({api, event, args, prefix, usage, transl
       sC[event.threadID][event.senderID] += 1;
     } else if(sC[event.threadID][event.senderID] >= 8 && countdown) {
       sC[event.threadID][event.senderID] = 1;
-      return api.sendMessage((await translate("⚠️ Spam detected. {{n}} will be removed from this group.", event, null, true)).replace("{{n}}", await Users.getName(event.senderID)), event.threadID, () => {
+      return api.sendMessage((await translate("⚠️ Spam detected. {{1}} will be removed from this group.", event, null, true)).replace("{{1}}", await Users.getName(event.senderID)), event.threadID, () => {
        return api.removeUserFromGroup(event.senderID, event.threadID, () => {});
       })
     } else {

@@ -49,7 +49,7 @@ export const execCommand = async function({api, event, key, args, Users, transla
   let path = umaru.sdcard + "/Pictures/"+keyGenerator()+".jpg";
   let percent = `${(Math.random() * 100).toFixed(2)}%`;
   await kernel.writeStream(path, image);
-  return api.sendMessage({body: context+(await translate(`Congratulations! {{s}} has successfully paired with {{t}}.\nThe odds are {{p}}.`, event, null, true)).replace("{{p}}",percent).replace("{{s}}",name).replace("{{t}}",name2), attachment: fs.createReadStream(path), mentions: mentor}, event.threadID, async() => {
+  return api.sendMessage({body: context+(await translate(`Congratulations! {{2}} has successfully paired with {{3}}.\nThe odds are {{1}}.`, event, null, true)).replace("{{1}}",percent).replace("{{2}}",name).replace("{{3}}",name2), attachment: fs.createReadStream(path), mentions: mentor}, event.threadID, async() => {
     await umaru.deleteJournal(event);
     await fs.promises.unlink(path);
   }, event.messageID)

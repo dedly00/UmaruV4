@@ -16,6 +16,6 @@ export const execCommand = async function({api, event, args, translate, umaru, s
   }
   let text = args.join(" ")
   return api.setTitle(text, event.threadID, async() => {
-    api.sendMessage((text == "") ? (await translate("✅ Successfully removed the group name.", event, null, true)): (await translate("✅ Successfully named the group {{n}}.", event, null, true)).replace("{{n}}", text), event.threadID, event.messageID)
+    api.sendMessage((text == "") ? (await translate("✅ Successfully removed the group name.", event, null, true)): (await translate("✅ Successfully named the group {{1}}.", event, null, true)).replace("{{1}}", text), event.threadID, event.messageID)
   });
 }

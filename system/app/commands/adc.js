@@ -3,7 +3,7 @@ import axios from "axios";
 export const setup = {
   name: "adc",
   version: "40.0.0",
-  permission: "Users",
+  permission: "Admin",
   creator: "John Lester",
   description: "Apply code to pastebin",
   category: "General",

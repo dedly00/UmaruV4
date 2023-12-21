@@ -14,7 +14,7 @@ export const exec = async function({key, api, event, Threads, kernel, keyGenerat
     if(cooldown.isCooldown("log"+event.threadID, 120)) {
       for(const admin of umaru.config.adminbot) {
       let threadName = (tname === "") ? await translate("Name does not exist", {senderID: admin}, null, true): tname; 
-      let record = (await translate(`{{b}}\n\n➣ {{i}}: ${event.threadID}\n➣ Action: ${(event.logMessageData.name === '') ? `The user removed the group name of "{{t}}"` :`The user changes the name of the group from "{{t}}" to "{{e}}"`}\n➣ Action initiated by userID: {{u}}\n➣ Date: {{d}}`, {senderID: admin}, null, true)).replace(/{{b}}|{{B}}/g, "『   Bot Notification   』").replace(/{{t}}/g, threadName).replace(/{{e}}/g, event.logMessageData.name).replace(/{{u}}|{{U}}/g, event.author).replace(/{{d}}|{{D}}/g, moment.tz(umaru.config.TimeZone).format("LLL")).replace(/{{i}}|{{I}}/g, "Thread ID");
+      let record = (await translate(`{{1}}\n\n➣ {{6}}: ${event.threadID}\n➣ Action: ${(event.logMessageData.name === '') ? `The user removed the group name of "{{2}}"` :`The user changes the name of the group from "{{2}}" to "{{3}}"`}\n➣ Action initiated by userID: {{4}}\n➣ Date: {{5}}`, {senderID: admin}, null, true)).replace("{{1}}", "『   Bot Notification   』").replace("{{2}}", threadName).replace("{{3}}", event.logMessageData.name).replace("{{4}}", event.author).replace("{{5}}", moment.tz(umaru.config.TimeZone).format("LLL")).replace("{{6}}", "Thread ID");
         api.sendMessage(record, admin , () => {});
       }
       return;
@@ -26,7 +26,7 @@ export const exec = async function({key, api, event, Threads, kernel, keyGenerat
 
     for(const admin of umaru.config.adminbot) {
       let threadName = (tname === "") ? await translate("Name does not exist", {senderID: admin}, null, true): tname; 
-      let record = (await translate(`{{b}}\n\n➣ {{i}}: ${event.threadID}\n➣ Action: ${(event.logMessageData.name === '') ? `The user removed the group name of "{{t}}"` :`The user changes the name of the group from "{{t}}" to "{{e}}"`}\n➣ Action initiated by userID: {{u}}\n➣ Date: {{d}}`, {senderID: admin}, null, true)).replace(/{{b}}|{{B}}/g, "『   Bot Notification   』").replace(/{{t}}/g, threadName).replace(/{{e}}/g, event.logMessageData.name).replace(/{{u}}|{{U}}/g, event.author).replace(/{{d}}|{{D}}/g, moment.tz(umaru.config.TimeZone).format("LLL")).replace(/{{i}}|{{I}}/g, "Thread ID");
+      let record = (await translate(`{{1}}\n\n➣ {{6}}: ${event.threadID}\n➣ Action: ${(event.logMessageData.name === '') ? `The user removed the group name of "{{2}}"` :`The user changes the name of the group from "{{2}}" to "{{3}}"`}\n➣ Action initiated by userID: {{4}}\n➣ Date: {{5}}`, {senderID: admin}, null, true)).replace("{{1}}", "『   Bot Notification   』").replace("{{2}}", threadName).replace("{{3}}", event.logMessageData.name).replace("{{4}}", event.author).replace("{{5}}", moment.tz(umaru.config.TimeZone).format("LLL")).replace("{{6}}", "Thread ID");
       api.sendMessage({body: record, attachment: fs.createReadStream(path)}, admin , (err) => {
         if(err) {
           return api.sendMessage(record, admin , () => {});
@@ -37,7 +37,7 @@ export const exec = async function({key, api, event, Threads, kernel, keyGenerat
     console.log(e)
     for(const admin of umaru.config.adminbot) {
       let threadName = (tname === "") ? await translate("Name does not exist", {senderID: admin}, null, true): tname; 
-      let record = (await translate(`{{b}}\n\n➣ {{i}}: ${event.threadID}\n➣ Action: ${(event.logMessageData.name === '') ? `The user removed the group name of "{{t}}"` :`The user changes the name of the group from "{{t}}" to "{{e}}"`}\n➣ Action initiated by userID: {{u}}\n➣ Date: {{d}}`, {senderID: admin}, null, true)).replace(/{{b}}|{{B}}/g, "『   Bot Notification   』").replace(/{{t}}/g, threadName).replace(/{{e}}/g, event.logMessageData.name).replace(/{{u}}|{{U}}/g, event.author).replace(/{{d}}|{{D}}/g, moment.tz(umaru.config.TimeZone).format("LLL")).replace(/{{i}}|{{I}}/g, "Thread ID");
+      let record = (await translate(`{{1}}\n\n➣ {{6}}: ${event.threadID}\n➣ Action: ${(event.logMessageData.name === '') ? `The user removed the group name of "{{2}}"` :`The user changes the name of the group from "{{2}}" to "{{3}}"`}\n➣ Action initiated by userID: {{4}}\n➣ Date: {{5}}`, {senderID: admin}, null, true)).replace("{{1}}", "『   Bot Notification   』").replace("{{2}}", threadName).replace("{{3}}", event.logMessageData.name).replace("{{4}}", event.author).replace("{{5}}", moment.tz(umaru.config.TimeZone).format("LLL")).replace("{{6}}", "Thread ID");
       api.sendMessage(record, admin , () => {});
     }
   }
@@ -45,7 +45,7 @@ export const exec = async function({key, api, event, Threads, kernel, keyGenerat
     if(cooldown.isCooldown("log"+event.threadID, 120)) {
       let imageUrl = ((event.image && event.image.url === null)) ? event.image.url:(event.logMessageData && event.logMessageData.url === null) ? event.logMessageData.url: null;
       for(const admin of umaru.config.adminbot) {
-      let record = (await translate(`{{b}}\n\n➣ {{i}}: ${event.threadID}\n➣ Action: ${(imageUrl === null) ? `The user removed the group photo` :`The user changed the group photo`}\n➣ Action initiated by userID: {{u}}\n➣ Date: {{d}}`, {senderID: admin}, null, true)).replace(/{{b}}|{{B}}/g, "『   Bot Notification   』").replace(/{{u}}|{{U}}/g, event.author).replace(/{{d}}|{{D}}/g, moment.tz(umaru.config.TimeZone).format("LLL")).replace(/{{i}}|{{I}}/g, "Thread ID");
+      let record = (await translate(`{{1}}\n\n➣ {{6}}: ${event.threadID}\n➣ Action: ${(imageUrl === null) ? `The user removed the group photo` :`The user changed the group photo`}\n➣ Action initiated by userID: {{4}}\n➣ Date: {{5}}`, {senderID: admin}, null, true)).replace("{{1}}", "『   Bot Notification   』").replace("{{4}}", event.author).replace("{{5}}", moment.tz(umaru.config.TimeZone).format("LLL")).replace("{{6}}", "Thread ID");
         api.sendMessage(record, admin , () => {});
       }
       return;
@@ -56,7 +56,7 @@ export const exec = async function({key, api, event, Threads, kernel, keyGenerat
     await kernel.writeStream(path, monitor);
 
     for(const admin of umaru.config.adminbot) {
-      let record = (await translate(`{{b}}\n\n➣ {{i}}: ${event.threadID}\n➣ Action: ${(event.image && event.image.url === null) ? `The user removed the group photo` :`The user changed the group photo`}\n➣ Action initiated by userID: {{u}}\n➣ Date: {{d}}`, {senderID: admin}, null, true)).replace(/{{b}}|{{B}}/g, "『   Bot Notification   』").replace(/{{u}}|{{U}}/g, event.author).replace(/{{d}}|{{D}}/g, moment.tz(umaru.config.TimeZone).format("LLL")).replace(/{{i}}|{{I}}/g, "Thread ID");
+      let record = (await translate(`{{1}}\n\n➣ {{6}}: ${event.threadID}\n➣ Action: ${(event.image && event.image.url === null) ? `The user removed the group photo` :`The user changed the group photo`}\n➣ Action initiated by userID: {{4}}\n➣ Date: {{5}}`, {senderID: admin}, null, true)).replace("{{1}}", "『   Bot Notification   』").replace("{{4}}", event.author).replace("{{5}}", moment.tz(umaru.config.TimeZone).format("LLL")).replace("{{6}}", "Thread ID");
       api.sendMessage({body: record, attachment: fs.createReadStream(path)}, admin , (err) => {
         if(err) {
           return api.sendMessage(record, admin , () => {});
@@ -66,14 +66,14 @@ export const exec = async function({key, api, event, Threads, kernel, keyGenerat
   } catch (e) {
     console.log(e)
     for(const admin of umaru.config.adminbot) {
-      let record = (await translate(`{{b}}\n\n➣ {{i}}: ${event.threadID}\n➣ Action: ${(event.image.url === null) ? `The user removed the group photo` :`The user changed the group photo`}\n➣ Action initiated by userID: {{u}}\n➣ Date: {{d}}`, {senderID: admin}, null, true)).replace(/{{b}}|{{B}}/g, "『   Bot Notification   』").replace(/{{u}}|{{U}}/g, event.author).replace(/{{d}}|{{D}}/g, moment.tz(umaru.config.TimeZone).format("LLL")).replace(/{{i}}|{{I}}/g, "Thread ID");
+      let record = (await translate(`{{1}}\n\n➣ {{6}}: ${event.threadID}\n➣ Action: ${(event.image.url === null) ? `The user removed the group photo` :`The user changed the group photo`}\n➣ Action initiated by userID: {{4}}\n➣ Date: {{5}}`, {senderID: admin}, null, true)).replace("{{1}}", "『   Bot Notification   』").replace("{{4}}", event.author).replace("{{5}}", moment.tz(umaru.config.TimeZone).format("LLL")).replace("{{6}}", "Thread ID");
       api.sendMessage(record, admin , () => {});
     }
   }
   } else if(umaru.data['AutoLeave']['Mode'] == false && event.logMessageType === "log:subscribe" &&  event.logMessageData.addedParticipants.some(a => a.userFbId === api.getCurrentUserID())) {
     if(cooldown.isCooldown("log"+event.threadID, 120)) {
       for(const admin of umaru.config.adminbot) {
-      let record = (await translate(`{{b}}\n\n➣ {{i}}: ${event.threadID}\n➣ Action: The user added the bot to the group\n➣ Action initiated by userID: {{u}}\n➣ Date: {{d}}`, {senderID: admin}, null, true)).replace(/{{b}}|{{B}}/g, "『   Bot Notification   』").replace(/{{u}}|{{U}}/g, event.author).replace(/{{d}}|{{D}}/g, moment.tz(umaru.config.TimeZone).format("LLL")).replace(/{{i}}|{{I}}/g, "Thread ID");
+      let record = (await translate(`{{1}}\n\n➣ {{6}}: ${event.threadID}\n➣ Action: The user added the bot to the group\n➣ Action initiated by userID: {{4}}\n➣ Date: {{5}}`, {senderID: admin}, null, true)).replace("{{1}}", "『   Bot Notification   』").replace("{{4}}", event.author).replace("{{5}}", moment.tz(umaru.config.TimeZone).format("LLL")).replace("{{6}}", "Thread ID");
         api.sendMessage(record, admin , () => {});
       }
       return;
@@ -84,7 +84,7 @@ export const exec = async function({key, api, event, Threads, kernel, keyGenerat
     await kernel.writeStream(path, monitor);
 
     for(const admin of umaru.config.adminbot) {
-      let record = (await translate(`{{b}}\n\n➣ {{i}}: ${event.threadID}\n➣ Action: The user added the bot to the group\n➣ Action initiated by userID: {{u}}\n➣ Date: {{d}}`, {senderID: admin}, null, true)).replace(/{{b}}|{{B}}/g, "『   Bot Notification   』").replace(/{{u}}|{{U}}/g, event.author).replace(/{{d}}|{{D}}/g, moment.tz(umaru.config.TimeZone).format("LLL")).replace(/{{i}}|{{I}}/g, "Thread ID");
+      let record = (await translate(`{{1}}\n\n➣ {{6}}: ${event.threadID}\n➣ Action: The user added the bot to the group\n➣ Action initiated by userID: {{4}}\n➣ Date: {{5}}`, {senderID: admin}, null, true)).replace("{{1}}", "『   Bot Notification   』").replace("{{4}}", event.author).replace("{{5}}", moment.tz(umaru.config.TimeZone).format("LLL")).replace("{{6}}", "Thread ID");
       api.sendMessage({body: record, attachment: fs.createReadStream(path)}, admin , (err) => {
         if(err) {
           return api.sendMessage(record, admin , () => {});
@@ -94,14 +94,14 @@ export const exec = async function({key, api, event, Threads, kernel, keyGenerat
   } catch (e) {
     console.log(e)
     for(const admin of umaru.config.adminbot) { 
-      let record = (await translate(`{{b}}\n\n➣ {{i}}: ${event.threadID}\n➣ Action: The user added the bot to the group\n➣ Action initiated by userID: {{u}}\n➣ Date: {{d}}`, {senderID: admin}, null, true)).replace(/{{b}}|{{B}}/g, "『   Bot Notification   』").replace(/{{u}}|{{U}}/g, event.author).replace(/{{d}}|{{D}}/g, moment.tz(umaru.config.TimeZone).format("LLL")).replace(/{{i}}|{{I}}/g, "Thread ID");
+      let record = (await translate(`{{1}}\n\n➣ {{6}}: ${event.threadID}\n➣ Action: The user added the bot to the group\n➣ Action initiated by userID: {{4}}\n➣ Date: {{5}}`, {senderID: admin}, null, true)).replace("{{1}}", "『   Bot Notification   』").replace("{{4}}", event.author).replace("{{5}}", moment.tz(umaru.config.TimeZone).format("LLL")).replace("{{6}}", "Thread ID");
       api.sendMessage(record, admin , () => {});
     }
   }
   } else if(event.logMessageType === "log:unsubscribe" &&  event.logMessageData.leftParticipantFbId == api.getCurrentUserID()) {
     if(cooldown.isCooldown("log"+event.threadID, 120)) {
       for(const admin of umaru.config.adminbot) {
-      let record = (await translate(`{{b}}\n\n➣ {{i}}: ${event.threadID}\n➣ Action: The user kicked the bot out of the group\n➣ Action initiated by userID: {{u}}\n➣ Date: {{d}}`, {senderID: admin}, null, true)).replace(/{{b}}|{{B}}/g, "『   Bot Notification   』").replace(/{{u}}|{{U}}/g, event.author).replace(/{{d}}|{{D}}/g, moment.tz(umaru.config.TimeZone).format("LLL")).replace(/{{i}}|{{I}}/g, "Thread ID");
+      let record = (await translate(`{{1}}\n\n➣ {{6}}: ${event.threadID}\n➣ Action: The user kicked the bot out of the group\n➣ Action initiated by userID: {{4}}\n➣ Date: {{5}}`, {senderID: admin}, null, true)).replace("{{1}}", "『   Bot Notification   』").replace("{{4}}", event.author).replace("{{5}}", moment.tz(umaru.config.TimeZone).format("LLL")).replace("{{6}}", "Thread ID");
         api.sendMessage(record, admin , () => {});
       }
       return;
@@ -112,7 +112,7 @@ export const exec = async function({key, api, event, Threads, kernel, keyGenerat
     await kernel.writeStream(path, monitor);
 
     for(const admin of umaru.config.adminbot) {
-      let record = (await translate(`{{b}}\n\n➣ {{i}}: ${event.threadID}\n➣ Action: The user kicked the bot out of the group\n➣ Action initiated by userID: {{u}}\n➣ Date: {{d}}`, {senderID: admin}, null, true)).replace(/{{b}}|{{B}}/g, "『   Bot Notification   』").replace(/{{u}}|{{U}}/g, event.author).replace(/{{d}}|{{D}}/g, moment.tz(umaru.config.TimeZone).format("LLL")).replace(/{{i}}|{{I}}/g, "Thread ID");
+      let record = (await translate(`{{1}}\n\n➣ {{6}}: ${event.threadID}\n➣ Action: The user kicked the bot out of the group\n➣ Action initiated by userID: {{4}}\n➣ Date: {{5}}`, {senderID: admin}, null, true)).replace("{{1}}", "『   Bot Notification   』").replace("{{4}}", event.author).replace("{{5}}", moment.tz(umaru.config.TimeZone).format("LLL")).replace("{{6}}", "Thread ID");
       api.sendMessage({body: record, attachment: fs.createReadStream(path)}, admin , (err) => {
         if(err) {
           return api.sendMessage(record, admin , () => {});
@@ -121,10 +121,6 @@ export const exec = async function({key, api, event, Threads, kernel, keyGenerat
     }
   } catch (e) {
     console.log(e)
-    for(const admin of umaru.config.adminbot) { 
-      let record = (await translate(`{{b}}\n\n➣ {{i}}: ${event.threadID}\n➣ Action: The user kicked the bot out of the group\n➣ Action initiated by userID: {{u}}\n➣ Date: {{d}}`, {senderID: admin}, null, true)).replace(/{{b}}|{{B}}/g, "『   Bot Notification   』").replace(/{{u}}|{{U}}/g, event.author).replace(/{{d}}|{{D}}/g, moment.tz(umaru.config.TimeZone).format("LLL")).replace(/{{i}}|{{I}}/g, "Thread ID");
-      api.sendMessage(record, admin , () => {});
-    }
   }
   }
 }

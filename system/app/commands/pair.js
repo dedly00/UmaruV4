@@ -53,7 +53,7 @@ export const execCommand = async function({api, event, key, args, Users, transla
   mentor.push({id: targetID, tag: name2});
     let percent = `${(Math.random() * 100).toFixed(2)}%`;
     let words = `\n${args.join(" ")}`;
-  return api.sendMessage({body: (await translate(`🥰 Successful pairing! {{w}}\n💌 I hope you enjoy life for 200 years.\n💕Double ratio: {{p}}\n {{s}} 💓 {{t}}`, event, null, true)).replace("{{w}}", (args.length === 0) ? "": words).replace("{{p}}",percent).replace("{{s}}",name).replace("{{t}}",name2), mentions: mentor, attachment: love}, event.threadID, async(err) => {
+  return api.sendMessage({body: (await translate(`🥰 Successful pairing! {{1}}\n💌 I hope you enjoy life for 200 years.\n💕Double ratio: {{2}}\n {{3}} 💓 {{4}}`, event, null, true)).replace("{{1}}", (args.length === 0) ? "": words).replace("{{2}}",percent).replace("{{3}}",name).replace("{{4}}",name2), mentions: mentor, attachment: love}, event.threadID, async(err) => {
     await umaru.deleteJournal(event);
   }, event.messageID);
 }

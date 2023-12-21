@@ -22,8 +22,8 @@ export const execCommand = async function({api, event, key, kernel, umaru, args,
   let path = umaru.sdcard + "/Pictures/"+keyGenerator()+".gif";
   await kernel.writeStream(path, image);
   let name = await Users.getName(mentions[0]);
-  let text = ["Slapped! {{name}} 😾","Oops, Slapped! 😾 {{name}}","You got slapped, {{name}} 😾","In your face, {{name}}! Slapped! 😾","Slapped! 😾 {{name}}, take that!"];
-  let msg = (await translate(text[Math.floor(Math.random() * text.length)], event, null, true)).replace(/{{name}}/g, name);
+  let text = ["Slapped! {{1}} 😾","Oops, Slapped! 😾 {{1}}","You got slapped, {{1}} 😾","In your face, {{1}}! Slapped! 😾","Slapped! 😾 {{1}}, take that!"];
+  let msg = (await translate(text[Math.floor(Math.random() * text.length)], event, null, true)).replace(/{{1}}/g, name);
   return api.sendMessage({body: (context != "") ? context : msg, attachment: fs.createReadStream(path), mentions: [{ tag: name, id: mentions[0]}]}, event.threadID, async() => {await fs.promises.unlink(path);
   }, event.messageID)
 }

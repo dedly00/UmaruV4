@@ -18,7 +18,12 @@ export const execCommand = async function({api, event, key, kernel, umaru, args,
   if(args.length === 0) return usage(this, prefix, event);
   let text = args.join(" ");
   await umaru.createJournal(event);
-  let data = await kernel.read(["movieinfo"], {key: key, search: text});
+  let data = "";
+  try {
+  data = await kernel.read(["movieinfo"], {key: key, search: text});
+  } catch {
+    await umaru.deleteJournal(event);
+  }
   if(typeof data === "string") return api.sendMessage("⚠️ "+data, event.threadID, event.messageID);
   let msg = (await translate(`🌸 Title: {{a}}\n🌸 Language: {{b}}\n🌸 Overview: {{c}}\n🌸 Release date: {{d}}\n🌸 Popularity: {{e}}\n🌸 Vote average: {{f}}\n🌸 Vote count: {{g}}`, event, null, true)).replace("{{a}}", data.original_title).replace("{{b}}", data.original_language).replace("{{c}}", data.overview).replace("{{d}}", data.release_date).replace("{{e}}", data.popularity).replace("{{f}}", data.vote_average).replace("{{g}}", data.vote_count);
   try {
@@ -31,6 +36,7 @@ export const execCommand = async function({api, event, key, kernel, umaru, args,
     await fs.promises.unlink(path);
   }, event.messageID)
   } catch {
+    await umaru.deleteJournal(event);
     api.sendMessage(context+msg, event.threadID, async() => {
       await umaru.deleteJournal(event);
     },event.messageID);

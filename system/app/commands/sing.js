@@ -22,7 +22,7 @@ export const execCommand = async function({api, args, event, prefix, kernel, key
     if(typeof ID === "string") api.unsendMessage(ID);
     await umaru.createJournal(event);
     let data = await kernel.read(["videometa"], {key: key, search: args.join(" ")});
-    let text = (await translate("🔎 There are {{n}} search results here:", event, null, true)).replace("{{n}}", data.length)+"\n";
+    let text = (await translate("🔎 There are {{1}} search results here:", event, null, true)).replace("{{1}}", data.length)+"\n";
     let format = {"1": "⓵","2":"⓶","3":"⓷","4":"⓸","5":"⓹","6":"⓺","7":"⓻","8":"⓼","9":"⓽","10":"⓾"};
     for(let i = 0; i < data.length; i++) {
         let path = umaru.sdcard+"/Pictures/"+keyGenerator()+".jpg";

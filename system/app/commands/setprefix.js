@@ -19,5 +19,5 @@ export const execCommand = async function({api, args, event, umaru, translate, p
   let botname = (umaru.config.botname) ? umaru.config.botname: umaru.data['users'][ownid].name.split(" ")[0];
   (text !== "") ? api.changeNickname(umaru.config.nickname.replace("{prefix}", text).replace("{botname}", botname), event.threadID, ownid):api.changeNickname("", event.threadID, ownid)
   await umaru.save();
-  return api.sendMessage((await translate("✅ Successfully set the prefix to {{p}}", event, null, true)).replace("{{p}}", text), event.threadID, event.messageID)
+  return api.sendMessage((await translate("✅ Successfully set the prefix to {{1}}", event, null, true)).replace("{{1}}", text), event.threadID, event.messageID)
 }

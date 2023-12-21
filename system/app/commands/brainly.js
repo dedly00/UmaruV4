@@ -27,7 +27,7 @@ export const execCommand = async function({api, args, event, prefix, kernel, key
         return usage(this, prefix, event);
     }
     let format = {"1": "⓵","2":"⓶","3":"⓷","4":"⓸","5":"⓹","6":"⓺","7":"⓻","8":"⓼","9":"⓽","10":"⓾"}
-    let text = (await translate("🔎 There are {{num}} search results here:", event, null, true)).replace("{{num}}", data.length)+"\n";
+    let text = (await translate("🔎 There are {{1}} search results here:", event, null, true)).replace("{{1}}", data.length)+"\n";
     for(let i = 0; i < data.length; i++) {
         let order = (i+1).toString();
         text += order.replace(order, format[order])+" "+ data[i].question+"\n\n";

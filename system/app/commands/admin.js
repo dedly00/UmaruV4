@@ -35,7 +35,7 @@ export const execCommand = async function({api, event, args, prefix, Users, umar
         api.sendMessage(context+`[Admin] ${await translate("Admin list", event, null, true)}:\n\n${list}`, event.threadID, event.messageID)
       break;
       case "add":
-        if(!systemadmin.includes(event.senderID)) return api.sendMessage(context+(await translate(umaru.config.permission_2, event, null, true)).replace("{{c}}", event.body), event.threadID, event.messageID);
+        if(!systemadmin.includes(event.senderID)) return api.sendMessage(context+(await translate(umaru.config.permission_2, event, null, true)).replace("{{1}}", event.body), event.threadID, event.messageID);
         let id = parseInt(mentions[0]);
         if(isNaN(id)) return api.sendMessage((await translate("⚠️ The uid is invalid.", event, null, true)), event.threadID, event.messageID);
         if(!umaru.config.adminbot.includes(id.toString())) {
@@ -45,7 +45,7 @@ export const execCommand = async function({api, event, args, prefix, Users, umar
         api.sendMessage(context+`[Admin] ${await translate("Added 1 admin", event, null, true)}:\n\n[ ${id} ] » ${await Users.getName(id)}`, event.threadID, event.messageID)
       break;
       case "remove": 
-      if(!systemadmin.includes(event.senderID)) return api.sendMessage((await translate(umaru.config.permission_2, event, null, true)).replace("{{c}}", event.body), event.threadID, event.messageID);
+      if(!systemadmin.includes(event.senderID)) return api.sendMessage((await translate(umaru.config.permission_2, event, null, true)).replace("{{1}}", event.body), event.threadID, event.messageID);
       let ids = parseInt(mentions[0]);
       if(isNaN(ids)) return api.sendMessage((await translate("⚠️ The uid is invalid.", event, null, true)), event.threadID, event.messageID);
 

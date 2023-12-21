@@ -20,12 +20,12 @@ export const execCommand = async function({api, event, umaru, args, translate, U
   if(mentions[0] === event.senderID) {
     umaru.data.users[event.senderID].exp = value;
     await umaru.save();
-    return api.sendMessage((await translate("✅ Successfully change your exp to {{m}}.", event, null, true)).replace("{{m}}", num), event.threadID, event.messageID)
+    return api.sendMessage((await translate("✅ Successfully change your exp to {{1}}.", event, null, true)).replace("{{1}}", num), event.threadID, event.messageID)
   } else {
     let name = await Users.getName(mentions[0]);
     if(!umaru.data.users[mentions[0]]) umaru.data.users[mentions[0]] = {};
     umaru.data.users[mentions[0]].exp = value;
     await umaru.save();
-    return api.sendMessage((await translate("✅ Successfully change {{n}}'s exp to {{m}}.", event, null, true)).replace("{{m}}", num).replace("{{n}}", name), event.threadID, event.messageID);
+    return api.sendMessage((await translate("✅ Successfully change {{2}}'s exp to {{1}}.", event, null, true)).replace("{{1}}", num).replace("{{2}}", name), event.threadID, event.messageID);
   }
 }

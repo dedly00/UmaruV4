@@ -31,7 +31,7 @@ export const execCommand = async function({api, event, umaru, args,   usage, pre
       if(!["me", "group", "system"].some(a => a === set)) return usage(this, prefix, event)
       let _2 = args.splice(2).join(" ").toLowerCase();
       let timez = (tzs.hasOwnProperty(_2)) ? tzs[_2] : null;
-      if(timez === null) return api.sendMessage((await translate("⚠️ Unsupported timezone. Use the {{p}} to display all supported timezone.", event, null, true)).replace("{{p}}", prefix+"timezone list"), event.threadID, event.messageID);
+      if(timez === null) return api.sendMessage((await translate("⚠️ Unsupported timezone. Use the {{1}} to display all supported timezone.", event, null, true)).replace("{{1}}", prefix+"timezone list"), event.threadID, event.messageID);
       if(set == "me") {
          umaru.data['users'][event.senderID]['timeZone'] = timez;
          await umaru.save();
@@ -39,12 +39,12 @@ export const execCommand = async function({api, event, umaru, args,   usage, pre
       } else if(set == "group") {
         if(event.isGroup == false) return api.sendMessage(await translate("⚠️ This option is only allowed in group chat.", event, null, true), event.threadID, event.messageID);
         let threadAdmin = await Threads.getAdminIDs(event.threadID);
-        if(!threadAdmin.includes(event.senderID)) return api.sendMessage((await translate(umaru.config.permission_1, event, null, false)).replace("{{c}}", event.body), event.threadID, event.messageID);
+        if(!(threadAdmin.includes(event.senderID)? true:systemadmin.includes(event.senderID))) return api.sendMessage((await translate(umaru.config.permission_1, event, null, false)).replace("{{1}}", event.body), event.threadID, event.messageID);
         umaru.data['threads'][event.threadID]['timeZone'] = timez;
          await umaru.save();
         return api.sendMessage((await translate("✅ Successfully change the timezone to "+timez, event, null, false)), event.threadID, event.messageID)
       } else if(set == "system") {
-        if(!systemadmin.includes(event.senderID)) return Umaru.sendMessage((await translate(umaru.config.permission_2, event, null, false)).replace("{{c}}", event.body), event.threadID, event.messageID);
+        if(!systemadmin.includes(event.senderID)) return Umaru.sendMessage((await translate(umaru.config.permission_2, event, null, false)).replace("{{1}}", event.body), event.threadID, event.messageID);
         umaru.config.language = timez;
         await fs.promises.writeFile(umaru.configPath, JSON.stringify(umaru.config, null, '\t'));
         return api.sendMessage((await translate("✅ Successfully change the timezone to "+timez, event, null, false)), event.threadID, event.messageID)
@@ -61,12 +61,12 @@ export const execCommand = async function({api, event, umaru, args,   usage, pre
       } else if(reset == "group") {
         if(event.isGroup == false) return api.sendMessage(await translate("⚠️ This option is only allowed in group chat.", event, null, true), event.threadID, event.messageID);
         let threadAdmin = await Threads.getAdminIDs(event.threadID);
-        if(!threadAdmin.includes(event.senderID)) return api.sendMessage((await translate(umaru.config.permission_1, event, null, false)).replace("{{c}}", event.body), event.threadID, event.messageID);
+        if(!(threadAdmin.includes(event.senderID)? true:systemadmin.includes(event.senderID))) return api.sendMessage((await translate(umaru.config.permission_1, event, null, false)).replace("{{1}}", event.body), event.threadID, event.messageID);
          umaru.data['threads'][event.threadID]['timeZone'] = 0;
          await umaru.save();
         return api.sendMessage((await translate("✅ Successfully reset the timezone.", event, null, false)), event.threadID, event.messageID);
       } else if(reset == "system") {
-        if(!systemadmin.includes(event.senderID)) return Umaru.sendMessage((await translate(umaru.config.permission_2, event, null, false)).replace("{{c}}", event.body), event.threadID, event.messageID);
+        if(!systemadmin.includes(event.senderID)) return Umaru.sendMessage((await translate(umaru.config.permission_2, event, null, false)).replace("{{1}}", event.body), event.threadID, event.messageID);
         umaru.config.TimeZone = "Asia/Manila";
         await fs.promises.writeFile(umaru.configPath, JSON.stringify(umaru.config, null, '\t'));
         return api.sendMessage((await translate("✅ Successfully reset the timezone.", event, null, false)), event.threadID, event.messageID);
@@ -74,7 +74,7 @@ export const execCommand = async function({api, event, umaru, args,   usage, pre
       break;
     case "list":
       let colect = {};
-      let msg = "🕒 Here's the supported timezone. Choose the timezone that is the same an your country's time:\n\n";
+      let msg = "🕒 Here's the supported timezone. Choose the timezone that is the same as your country's time:\n\n";
       let la = tz;
       let pages = parseInt(args.splice(1).join(" ").match(/\b\d+\b/g)) || 1;
       let page = tz.length/2;

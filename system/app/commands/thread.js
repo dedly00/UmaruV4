@@ -23,7 +23,7 @@ export const execCommand = async function({api, event, kernel, key, umaru, keyGe
       if(umaru.data.threads.hasOwnProperty(mentions[0])) {
         umaru.data.threads[mentions[0]].isBanned = `${reason}\nIssued: ${moment.tz(umaru.config.TimeZone).format("LLLL")}`;
         await umaru.save();
-        return api.sendMessage((await translate(`✅ Successfully ban {{n}}\n\n${(reason !== "") ? "Reason: {{r}}":""}`, event, null, true)).replace("{{n}}", await Threads.getName(mentions[0])).replace("{{r}}", reason), event.threadID,event.messageID);
+        return api.sendMessage((await translate(`✅ Successfully ban {{1}}\n\n${(reason !== "") ? "Reason: {{2}}":""}`, event, null, true)).replace("{{1}}", await Threads.getName(mentions[0])).replace("{{2}}", reason), event.threadID,event.messageID);
       } else {
         return api.sendMessage((await translate("⚠️ This threadID doesn't exist in my database.", event, null, true)), event.threadID,event.messageID);
       }
@@ -33,7 +33,7 @@ export const execCommand = async function({api, event, kernel, key, umaru, keyGe
       if(umaru.data.threads.hasOwnProperty(mentions[0])) {
         delete umaru.data.threads[mentions[0]].isBanned;
         await umaru.save();
-        return api.sendMessage((await translate(`✅ Successfully unban {{n}}`, event, null, true)).replace("{{n}}", await Threads.getName(mentions[0])), event.threadID,event.messageID);
+        return api.sendMessage((await translate(`✅ Successfully unban {{1}}`, event, null, true)).replace("{{1}}", await Threads.getName(mentions[0])), event.threadID,event.messageID);
       } else {
         return api.sendMessage((await translate("⚠️ This threadID doesn't exist in my database.", event, null, true)), event.threadID,event.messageID);
       }

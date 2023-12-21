@@ -13,5 +13,5 @@ export const setup = {
 }
 export const domain = {"tid": setup.name};
 export const execCommand = async function({api, event, translate}) {
-    return api.sendMessage((await translate(`🌠 Here's the TID: {{t}}`, event, null, true)).replace("{{t}}", event.threadID), event.threadID, event.messageID)
+    return api.sendMessage((await translate(`🌠 Here's the TID: {{1}}`, event, null, true)).replace("{{1}}", event.threadID), event.threadID, event.messageID)
 }
