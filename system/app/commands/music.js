@@ -19,12 +19,12 @@ export const execCommand = async function({api, event, key, kernel, umaru, args,
   let text = args.join(" ");
   api.sendMessage((await translate("🔍 Searching", event, null, true))+" "+text, event.threadID, event.messageID);
   (event.attachments.length !== 0 && event.attachments[0].type == "share" && event.attachments[0].hasOwnProperty('title')) ? text = event.attachments[0].title: ""; 
-  let data = await kernel.read(["music"], {key: key, search: text});
+  let data = await kernel.read(["music"], {key: key, search: text, defaultLink: true});
   if(data && data.success == false) return api.sendMessage((await translate("⚠️ An error occurred:", event, null, true))+" "+data.msg, event.threadID, event.messageID);
-  let music = await kernel.readStream(["getMusic"], {key: key, ID: data.ID});
-  await umaru.createJournal(event);
+    await umaru.createJournal(event);
+  let music = await kernel.readStream(["getMusic"], {key: key, ID: data.ID, defaultLink: data.defaultLink});
   let path = umaru.sdcard + "/Music/"+keyGenerator()+".mp3";
-  await kernel.writeStream(path, music)
+  await kernel.writeStream(path, music);
   return api.sendMessage({body: context+data.title, attachment: fs.createReadStream(path)}, event.threadID, async(e) => {
     await umaru.deleteJournal(event);
     await fs.promises.unlink(path);

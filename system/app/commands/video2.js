@@ -19,10 +19,10 @@ export const execCommand = async function({api, event, key, kernel, umaru, args,
   let text = args.join(" ");
   api.sendMessage((await translate("🔍 Searching", event, null, true))+" "+text, event.threadID, event.messageID);
   (event.attachments.length !== 0 && event.attachments[0].type == "share" && event.attachments[0].hasOwnProperty('title')) ? text = event.attachments[0].title: ""; 
-      await umaru.createJournal(event);
-  let data = await kernel.read(["video"], {key: key, search: text});
+  let data = await kernel.read(["video"], {key: key, search: text, defaultLink: true});
   if(data && data.success == false) return api.sendMessage((await translate("⚠️ An error occurred:", event, null, true))+" "+data.msg, event.threadID, event.messageID);
-  let video = await kernel.readStream(["getVideo"], {key: key, ID: data.ID});
+      await umaru.createJournal(event);
+  let video = await kernel.readStream(["getVideo"], {key: key, ID: data.ID, defaultLink: data.defaultLink});
 
   let path = umaru.sdcard + "/Download/"+keyGenerator()+".mp4";
   await kernel.writeStream(path, video)

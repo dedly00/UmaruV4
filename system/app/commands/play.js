@@ -22,7 +22,7 @@ export const execCommand = async function({api, args, event, prefix, kernel, key
     if(typeof ID === "string") api.unsendMessage(ID);
     await umaru.createJournal(event);
     let data = await kernel.read(["videometa"], {key: key, search: args.join(" ")});
-    let text = (await translate("🔎 There are {{n}} search results here:", event, null, true)).replace("{{n}}", data.length)+"\n";
+    let text = (await translate("🔎 There are {{1}} search results here:", event, null, true)).replace("{{1}}", data.length)+"\n";
     let format = {"1": "⓵","2":"⓶","3":"⓷","4":"⓸","5":"⓹","6":"⓺","7":"⓻","8":"⓼","9":"⓽","10":"⓾"};
     for(let i = 0; i < data.length; i++) {
         let path = umaru.sdcard+"/Pictures/"+keyGenerator()+".jpg";
@@ -54,10 +54,10 @@ export const execReply = async function({api, args, kernel, key, event, reply,  
     for(let i = 0; i < data.length; i++) {
         if((i+1) === choose) {
             try {
-            let play = await kernel.read(["music"], {key: key, url: data[i].url});
+            let play = await kernel.read(["music"], {key: key, url: data[i].url, defaultLink: true});
             if(play && play.success == false) return api.sendMessage((await translate("⚠️ An error occurred:", event, null, true))+" "+data.msg, event.threadID, event.messageID);
             await umaru.createJournal(event);
-            let getMusic = await kernel.readStream(["getMusic"], {key: key, ID: play.ID});
+            let getMusic = await kernel.readStream(["getMusic"], {key: key, ID: play.ID, defaultLink: play.defaultLink});
             let path = umaru.sdcard + "/Music/"+keyGenerator()+".mp3";
             await kernel.writeStream(path, getMusic);
             api.sendMessage({body: data[i].title, attachment: fs.createReadStream(path)}, event.threadID, async (e) => {

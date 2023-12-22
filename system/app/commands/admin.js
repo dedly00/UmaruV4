@@ -21,6 +21,7 @@ export const execCommand = async function({api, event, args, prefix, Users, umar
       case 'list':
         let list = "";
         for(const item of umaru.config.adminbot) {
+          if(item.trim() === "") continue;
           let name;
           let link;
           if(umaru.config.Anonymous == true) {
